@@ -1,0 +1,6 @@
+spring:
+  application:
+    # spring application group name
+    group: savings-account
+    # spring application name
+    name: sggc

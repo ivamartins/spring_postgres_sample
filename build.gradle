@@ -1,0 +1,34 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.6.RELEASE'
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group = 'sggc'
+version = '1.0.0'
+
+apply plugin: "java"
+apply plugin: 'idea'
+apply plugin: "org.springframework.boot"
+apply from: 'dependencies.gradle'
+apply plugin: "io.spring.dependency-management"
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+// forces utf-8 encoding for source files
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// configure test to run with junit platform
+test {
+    // enable JUnit 5
+    useJUnitPlatform()
+
+    // always run tests, even when nothing changed.
+    dependsOn 'cleanTest'
+}

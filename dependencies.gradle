@@ -1,0 +1,35 @@
+ext['platformDependencies_version'] = '5.1.1'
+ext['flyway_version'] = '6.5.7'
+ext['orikaVersion'] = '1.5.2'
+ext['randombeans_version'] = '3.7.0'
+
+dependencies {
+    // Reactive Spring MVC implementation.
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
+
+    // Persistence
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    implementation group: 'org.postgresql', name: 'postgresql'
+
+    // flyway
+    compile "org.flywaydb:flyway-core:${flyway_version}"
+
+    // OpenAPI WebFlux UI
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-webflux-ui', version: '1.5.9'
+
+    // Orika
+    implementation group: 'ma.glasnost.orika', name: 'orika-core', version: orikaVersion
+
+    // JUnit 5
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine'
+
+    // Spring test libraries for testing controllers and other spring components
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
+    testImplementation group: 'io.github.benas', name: 'random-beans', version: randombeans_version
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.1'
+    testImplementation group: 'com.squareup.okhttp3', name: 'mockwebserver', version: '4.9.1'
+
+}
